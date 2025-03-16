@@ -1,0 +1,7 @@
+env: "local" #dev, prod
+from: "mesto4uu@gmail.com"
+smtp_host: "smtp.mail.ru"
+smtp_port: "587"
+grpc:
+  port: 44042
+  timeout: 1h
