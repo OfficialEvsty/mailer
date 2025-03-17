@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"google.golang.org/grpc"
 	"log/slog"
+	mailrpc "mailer/internal/grpc/mail"
+	"mailer/internal/services/mail"
 	"net"
 )
 
@@ -16,7 +18,7 @@ type App struct {
 // New creates new gRPC server app
 func New(
 	log *slog.Logger,
-	mailService *mail.Mail,
+	mailService *mail.Mailer,
 	port int,
 ) *App {
 	gRPCServer := grpc.NewServer()

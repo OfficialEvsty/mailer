@@ -7,10 +7,11 @@ import (
 )
 
 type MailerConfig struct {
+	Env      string     `yaml:"env"`
 	From     string     `yaml:"from"`
 	SmtpHost string     `yaml:"smtp_host"`
 	SmtpPort string     `yaml:"smtp_port"`
-	gRPC     GRPCConfig `yaml:"grpc"`
+	GRPC     GRPCConfig `yaml:"grpc"`
 }
 
 type GRPCConfig struct {

@@ -1,6 +1,7 @@
 package libs
 
 import (
+	"context"
 	"fmt"
 	"mailer/domain/models"
 	"mailer/internal/config"
@@ -24,17 +25,17 @@ func New(cfg *config.MailerConfig) *Mailer {
 }
 
 // auth email and sends mails to recipients
-func (m *Mailer) Send(from string, password string, mail models.Mail) error {
+func (m *Mailer) Send(ctx context.Context, password string, mail *models.Mail) error {
 
-	auth := smtp.PlainAuth("", from, password, m.SmtpHost)
+	auth := smtp.PlainAuth("", m.From, password, m.SmtpHost)
 
-	msg := "From: " + from + "\n" +
+	msg := "From: " + m.From + "\n" +
 		"To: " + strings.Join(mail.To, ",") + "\n" +
 		"Subject: " + mail.Subject + "\n\n" +
 		mail.Body
 
 	// отправка письма
-	err := smtp.SendMail(m.SmtpHost+":"+m.SmtpPort, auth, from, mail.To, []byte(msg))
+	err := smtp.SendMail(m.SmtpHost+":"+m.SmtpPort, auth, m.From, mail.To, []byte(msg))
 	if err != nil {
 		return fmt.Errorf("ошибка при отправке письма: %w", err)
 	}
