@@ -2,9 +2,9 @@ package mail
 
 import (
 	"context"
+	"github.com/OfficialEvsty/mailer/domain/models"
+	"github.com/OfficialEvsty/mailer/internal/services/mail/interfaces"
 	"log/slog"
-	"mailer/domain/models"
-	"mailer/internal/services/mail/interfaces"
 )
 
 // Mailer sends messages on user's emails

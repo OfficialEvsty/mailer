@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/OfficialEvsty/mailer/internal/app"
+	"github.com/OfficialEvsty/mailer/internal/config"
 	"log/slog"
-	"mailer/internal/app"
-	"mailer/internal/config"
 	"os"
 	"os/signal"
 	"syscall"

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/MailSender.iml" filepath="$PROJECT_DIR$/.idea/MailSender.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/mailer.iml" filepath="$PROJECT_DIR$/.idea/mailer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../protos/.idea/protos.iml" filepath="$PROJECT_DIR$/../protos/.idea/protos.iml" />
     </modules>
   </component>
 </project>

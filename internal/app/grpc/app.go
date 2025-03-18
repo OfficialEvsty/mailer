@@ -2,10 +2,10 @@ package grpc
 
 import (
 	"fmt"
+	mailrpc "github.com/OfficialEvsty/mailer/internal/grpc/mail"
+	"github.com/OfficialEvsty/mailer/internal/services/mail"
 	"google.golang.org/grpc"
 	"log/slog"
-	mailrpc "mailer/internal/grpc/mail"
-	"mailer/internal/services/mail"
 	"net"
 )
 

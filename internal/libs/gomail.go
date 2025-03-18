@@ -3,8 +3,8 @@ package libs
 import (
 	"context"
 	"fmt"
-	"mailer/domain/models"
-	"mailer/internal/config"
+	"github.com/OfficialEvsty/mailer/domain/models"
+	"github.com/OfficialEvsty/mailer/internal/config"
 	"net/smtp"
 	"strings"
 )
@@ -28,7 +28,6 @@ func New(cfg *config.MailerConfig) *Mailer {
 func (m *Mailer) Send(ctx context.Context, password string, mail *models.Mail) error {
 
 	auth := smtp.PlainAuth("", m.From, password, m.SmtpHost)
-
 	msg := "From: " + m.From + "\n" +
 		"To: " + strings.Join(mail.To, ",") + "\n" +
 		"Subject: " + mail.Subject + "\n\n" +

@@ -1,6 +1,6 @@
-module mailer
+module github.com/OfficialEvsty/mailer
 
-go 1.23.2
+go 1.24.0
 
 require (
 	github.com/OfficialEvsty/protos v0.3.0

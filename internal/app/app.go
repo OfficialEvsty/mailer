@@ -1,21 +1,21 @@
 package app
 
 import (
+	"github.com/OfficialEvsty/mailer/internal/app/grpc"
+	"github.com/OfficialEvsty/mailer/internal/config"
+	"github.com/OfficialEvsty/mailer/internal/libs"
+	mailservice "github.com/OfficialEvsty/mailer/internal/services/mail"
 	"log/slog"
-	grpcapp "mailer/internal/app/grpc"
-	"mailer/internal/config"
-	"mailer/internal/libs"
-	"mailer/internal/services/mail"
 )
 
 type App struct {
-	GRPCSrv *grpcapp.App
+	GRPCSrv *grpc.App
 }
 
 func New(logger *slog.Logger, cfg *config.MailerConfig) *App {
 	mailer := libs.New(cfg)
-	mailService := mail.New(logger, mailer)
-	grpcServer := grpcapp.New(logger, mailService, cfg.GRPC.Port)
+	mailService := mailservice.New(logger, mailer)
+	grpcServer := grpc.New(logger, mailService, cfg.GRPC.Port)
 	return &App{
 		GRPCSrv: grpcServer,
 	}

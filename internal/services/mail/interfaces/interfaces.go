@@ -2,7 +2,7 @@ package interfaces
 
 import (
 	"context"
-	"mailer/domain/models"
+	"github.com/OfficialEvsty/mailer/domain/models"
 )
 
 // MailProvider interface for sending mail on user's email
