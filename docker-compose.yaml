@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    environment:
+      - GMAIL_EXTERNAL_PASSWORD=${GMAIL_EXTERNAL_PASSWORD}

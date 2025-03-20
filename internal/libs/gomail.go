@@ -6,6 +6,7 @@ import (
 	"github.com/OfficialEvsty/mailer/domain/models"
 	"github.com/OfficialEvsty/mailer/internal/config"
 	"net/smtp"
+	"os"
 	"strings"
 )
 
@@ -26,6 +27,7 @@ func New(cfg *config.MailerConfig) *Mailer {
 
 // auth email and sends mails to recipients
 func (m *Mailer) Send(ctx context.Context, password string, mail *models.Mail) error {
+	password, _ = os.LookupEnv("GMAIL_EXTERNAL_PASSWORD")
 
 	auth := smtp.PlainAuth("", m.From, password, m.SmtpHost)
 	msg := "From: " + m.From + "\n" +
