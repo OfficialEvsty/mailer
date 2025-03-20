@@ -23,5 +23,4 @@ COPY config/local.yaml ./config/local.yaml
 
 LABEL version="v0.1.0" author="evsty" desc="api mail service"
 
-CMD ""
 ENTRYPOINT ["/mailer/main"]

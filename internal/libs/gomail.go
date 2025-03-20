@@ -26,15 +26,15 @@ func New(cfg *config.MailerConfig) *Mailer {
 }
 
 // auth email and sends mails to recipients
-func (m *Mailer) Send(ctx context.Context, password string, mail *models.Mail) error {
-	password, _ = os.LookupEnv("GMAIL_EXTERNAL_PASSWORD")
+func (m *Mailer) Send(ctx context.Context, p string, mail *models.Mail) error {
+	password, _ := os.LookupEnv("GMAIL_EXTERNAL_PASSWORD")
 
 	auth := smtp.PlainAuth("", m.From, password, m.SmtpHost)
 	msg := "From: " + m.From + "\n" +
 		"To: " + strings.Join(mail.To, ",") + "\n" +
 		"Subject: " + mail.Subject + "\n\n" +
 		mail.Body
-
+	fmt.Println(mail.To, mail.Body, m.From, password, msg)
 	// отправка письма
 	err := smtp.SendMail(m.SmtpHost+":"+m.SmtpPort, auth, m.From, mail.To, []byte(msg))
 	if err != nil {
